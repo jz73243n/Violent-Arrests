@@ -91,7 +91,7 @@ select(1,2,4,7, 3,5,8, 6)
 man_arr <- 
 merge(
   data1 %>% 
-  filter(ArrestBorough == 'M', ChargeOrder==1) %>% #you're counting every charge as its own unique case 
+  filter(ArrestBorough == 'M', ChargeOrder==1) %>% 
   mutate(offense_year = ifelse(offense_year == "2021", "2021 to date", offense_year)) %>% 
   mutate(`Year` = factor(offense_year, levels = c('2018', '2019', '2020', '2021 to date'))) %>% 
   group_by(`Year`) %>% 
