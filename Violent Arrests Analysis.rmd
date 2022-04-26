@@ -152,10 +152,8 @@ summary(data1 %>%
 ## X Number of these arrests occurred while the alleged person was out on a misdemeanor, and Y Number while out on a violent felony. 
 ## Z of these arrests occurred while the alleged person was out on bail 
 
-#MSS: I wouldn't use data2 as the base for the cat or top tables -- since the # of violent arrests is by defendant, if a single person has multiple cases pending, then the number of arrests will be double counted here - if you look at the total number of unique violent arrests associated with a Dany case, you'll notice there are only 5,823 in the dataset, but the cat table in the report counts 8,597 -- similarly, the category is by case not by person...I added a field to in the data1 table (in the query) that indicates the top charge per PERSON (rather than case) across all cases they had pending at the time of the offense i.e. if an person is at liberty on two DANY cases, one which is for a misdemeanor, and one for a felony, the felony charge matters more for our purposes -- SEE cat2 and top2 tables for corrections
 
 
-#MSS added
 cat2 <- 
   data1 %>% 
   filter(OutInNY==1, ChargeOrder == 1) %>% 
@@ -169,7 +167,7 @@ cat2 <-
   adorn_totals("row") 
 
 
-#MSS added
+
 top2 <- 
      data1 %>% 
       filter(OutInNY==1, ChargeOrder == 1) %>% 
